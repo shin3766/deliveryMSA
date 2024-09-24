@@ -1,7 +1,6 @@
-package com.deliveryMSA.Herbs.domain.herbs.exception;
+package com.deliveryMSA.Hubs.domain.hubs.exception;
 
-import com.deliveryMSA.Herbs.domain.herbs.message.ExceptionMessage;
-import com.deliveryMSA.Herbs.global.message.ExceptionResponse;
+import com.deliveryMSA.Hubs.domain.hubs.message.ExceptionMessage;
 import org.springframework.http.HttpStatus;
 
 public class HerbsException extends RuntimeException {

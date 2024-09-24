@@ -1,4 +1,4 @@
-package com.deliveryMSA.Herbs.domain.herbs.model.value_objects;
+package com.deliveryMSA.Hubs.domain.hubs.model.value_objects;
 
 import jakarta.persistence.Column;
 

@@ -1,6 +1,6 @@
-package com.deliveryMSA.Herbs.domain.herbs.model.value_objects.converter;
+package com.deliveryMSA.Hubs.domain.hubs.model.value_objects.converter;
 
-import com.deliveryMSA.Herbs.domain.herbs.model.value_objects.Address;
+import com.deliveryMSA.Hubs.domain.hubs.model.value_objects.Address;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 
@@ -13,7 +13,7 @@ public class AddressConverter implements AttributeConverter<Address, String> {
         if (address == null) return null;
 
         return new StringBuilder()
-                .append(address.getCityOrProvince())
+                .append(address.getcity())
                 .append(".")
                 .append(address.getDistrict())
                 .append(".")
@@ -28,11 +28,11 @@ public class AddressConverter implements AttributeConverter<Address, String> {
 
         if (value == null) return null;
         final String[] parts = value.split("\\.");
-        String cityOrProvince = parts[0];
+        String city = parts[0];
         String district = parts[1];
         String street = parts[2];
         String houseNumber = parts[3];
 
-        return new Address(cityOrProvince, district, street, houseNumber);
+        return new Address(city, district, street, houseNumber);
     }
 }
