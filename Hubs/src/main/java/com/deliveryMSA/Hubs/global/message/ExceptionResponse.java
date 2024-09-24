@@ -1,4 +1,4 @@
-package com.deliveryMSA.Herbs.global.message;
+package com.deliveryMSA.Hubs.global.message;
 
 import static lombok.AccessLevel.PRIVATE;
 

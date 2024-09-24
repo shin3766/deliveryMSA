@@ -1,4 +1,4 @@
-package com.deliveryMSA.Herbs.global.message;
+package com.deliveryMSA.Hubs.global.message;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static lombok.AccessLevel.PRIVATE;

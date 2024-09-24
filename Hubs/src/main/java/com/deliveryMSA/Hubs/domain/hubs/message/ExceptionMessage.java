@@ -1,7 +1,6 @@
-package com.deliveryMSA.Herbs.domain.herbs.message;
+package com.deliveryMSA.Hubs.domain.hubs.message;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 
