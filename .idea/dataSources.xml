@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="B2Bdeliverymsa@localhost" uuid="ff779f0f-6f53-4e04-9a66-9e2dd1b96f25">
+    <data-source source="LOCAL" name="mysql-container@localhost" uuid="a7552738-9bc0-45b5-96cc-97ace62c8b03">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/B2Bdeliverymsa</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/mysql-container</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
       </jdbc-additional-properties>
