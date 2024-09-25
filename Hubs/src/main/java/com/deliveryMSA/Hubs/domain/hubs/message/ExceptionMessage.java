@@ -8,7 +8,8 @@ import org.springframework.http.HttpStatus;
 @RequiredArgsConstructor
 public enum ExceptionMessage {
 
-    HERBS_NOT_FOUND(HttpStatus.NOT_FOUND, "Not Found Herbs");
+    HUBS_NOT_FOUND(HttpStatus.NOT_FOUND, "Not Found Hubs"),
+    HUBS_ALREADY_EXIST(HttpStatus.CONFLICT, "This Hubs ID is already exists");
 
     private final HttpStatus httpStatus;
     private final String message;

@@ -3,12 +3,12 @@ package com.deliveryMSA.Hubs.domain.hubs.exception;
 import com.deliveryMSA.Hubs.domain.hubs.message.ExceptionMessage;
 import org.springframework.http.HttpStatus;
 
-public class HerbsException extends RuntimeException {
+public class HubsException extends RuntimeException {
 
     private final ExceptionMessage exceptionMessage;
 
-    public HerbsException(ExceptionMessage exceptionMessage) {
-        super("[Herbs Exception] : " + exceptionMessage.getMessage());
+    public HubsException(ExceptionMessage exceptionMessage) {
+        super("[Hubs Exception] : " + exceptionMessage.getMessage());
         this.exceptionMessage = exceptionMessage;
     }
 
