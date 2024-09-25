@@ -1,19 +1,20 @@
 package com.deliveryMSA.Hubs.domain.hubs.model.value_objects;
 
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Embeddable
 @Getter
+@NoArgsConstructor
 public class Address {
 
     private String city;
     private String district;
     private String street;
     private String houseNumber;
-
-    // JPA only
-    protected Address() {}
 
     // null, 빈 값, 공백 체크
     public Address(String city, String district, String street, String houseNumber) {
@@ -22,7 +23,7 @@ public class Address {
                 district == null || district.trim().isEmpty() ||
                 street == null || street.trim().isEmpty() ||
                 houseNumber == null || houseNumber.trim().isEmpty()) {
-            throw new IllegalArgumentException("Address values cannot be null or empty");
+            throw new IllegalArgumentException("주소가 잘못됐습니다.");
         }
         this.city = city;
         this.district = district;

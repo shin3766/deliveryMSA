@@ -10,10 +10,12 @@ public class AddressConverter implements AttributeConverter<Address, String> {
     @Override
     public String convertToDatabaseColumn(Address address) {
 
-        if (address == null) return null;
+        if (address == null) {
+            return null;
+        }
 
         return new StringBuilder()
-                .append(address.getcity())
+                .append(address.getCity())
                 .append(".")
                 .append(address.getDistrict())
                 .append(".")
@@ -26,7 +28,9 @@ public class AddressConverter implements AttributeConverter<Address, String> {
     @Override
     public Address convertToEntityAttribute(String value) {
 
-        if (value == null) return null;
+        if (value == null) {
+            return null;
+        }
         final String[] parts = value.split("\\.");
         String city = parts[0];
         String district = parts[1];

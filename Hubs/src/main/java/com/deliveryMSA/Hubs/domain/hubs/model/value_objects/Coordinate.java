@@ -1,7 +1,11 @@
 package com.deliveryMSA.Hubs.domain.hubs.model.value_objects;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import lombok.Getter;
 
+@Embeddable
+@Getter
 public class Coordinate {
     @Column(name = "latitude")
     private double latitude;
