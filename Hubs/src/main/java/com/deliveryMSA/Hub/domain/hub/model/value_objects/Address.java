@@ -1,5 +1,6 @@
 package com.deliveryMSA.Hub.domain.hub.model.value_objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +10,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Address {
 
+    @Column(nullable = false)
     private String city;
+
+    @Column(nullable = false)
     private String district;
+
+    @Column(nullable = false)
     private String street;
+
+    @Column
     private String houseNumber;
 
     // null, 빈 값, 공백 체크

@@ -1,11 +1,11 @@
 spring:
   application:
-    name: Herbs
+    name: hubs
 
   datasource:
-    url: jdbc:mysql://localhost:3306/mysql-container
-    username: root
-    password: root
+    url: jdbc:mysql://localhost:3306/hubs
+    username: hubs
+    password: hubs
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Entity
 @Table(name = "hub")
@@ -31,11 +32,16 @@ public class Hub {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Hub_id", nullable = false)
     private Integer id;
+
+    @Column(nullable = false, unique = true)
     private String name;
+
     @Embedded
     private Address address;
+
     @Embedded
     private Coordinate coordinate;
+
     private boolean isDeleted = Boolean.FALSE;
 
     @Builder(access = AccessLevel.PRIVATE)
