@@ -7,7 +7,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.deliveryMSA.Hub.domain.hub.dto.request.CreateHubRequestDto;
 import com.deliveryMSA.Hub.domain.hub.dto.response.CreateHubResponseDto;
 import com.deliveryMSA.Hub.domain.hub.exception.HubException;
-import com.deliveryMSA.Hub.domain.hub.model.Hub;
 import com.deliveryMSA.Hub.domain.hub.repository.HubRepository;
 import com.deliveryMSA.Hub.domain.hub.service.HubServiceImpl;
 import org.junit.jupiter.api.DisplayName;

@@ -8,5 +8,4 @@ public interface CommonResponse {
 
     @NonNull
     String message();
-
 }
