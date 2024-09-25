@@ -14,12 +14,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="hub")
+@Table(name = "hub")
+@Getter
 @Access(AccessType.FIELD)
-public class Hub {
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class Hubs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,18 +39,19 @@ public class Hub {
     private boolean isDeleted = Boolean.FALSE;
 
     @Builder(access = AccessLevel.PRIVATE)
-    public Hub(String name, Address address, Coordinate coordinate) {
+    public Hubs(String name, Address address, Coordinate coordinate) {
         this.name = name;
         this.address = address;
         this.coordinate = coordinate;
     }
 
     // hub 생성
-    public static Hub from(CreateHubRequestDto requestDto) {
+    public static Hubs from(CreateHubRequestDto requestDto) {
 
-        return Hub.builder()
+        return Hubs.builder()
                 .name(requestDto.name())
-               .address(new Address(requestDto.city(), requestDto.district(), requestDto.street(), requestDto.houseNumber()))
+                .address(new Address(requestDto.city(), requestDto.district(), requestDto.street(),
+                        requestDto.houseNumber()))
                 .coordinate(new Coordinate(requestDto.latitude(), requestDto.longitude()))
                 .build();
     }
@@ -52,7 +59,8 @@ public class Hub {
     // hub 업데이트
     public void update(UpdateHubRequestDto requestDto) {
         this.name = requestDto.name();
-        this.address = new Address(requestDto.city(), requestDto.district(), requestDto.street(), requestDto.houseNumber());
+        this.address = new Address(requestDto.city(), requestDto.district(), requestDto.street(),
+                requestDto.houseNumber());
         this.coordinate = new Coordinate(requestDto.latitude(), requestDto.longitude());
     }
 
