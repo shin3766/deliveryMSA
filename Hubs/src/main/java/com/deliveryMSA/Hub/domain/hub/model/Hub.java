@@ -4,9 +4,9 @@ import com.deliveryMSA.Hub.domain.hub.dto.request.CreateHubRequestDto;
 import com.deliveryMSA.Hub.domain.hub.dto.request.UpdateHubRequestDto;
 import com.deliveryMSA.Hub.domain.hub.model.value_objects.Address;
 import com.deliveryMSA.Hub.domain.hub.model.value_objects.Coordinate;
+import com.deliveryMSA.Hub.domain.hub.model.value_objects.HubName;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +20,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "hub")
+@Table(name = "p_hub")
 @Getter
 @Access(AccessType.FIELD)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -29,11 +29,10 @@ public class Hub {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Hub_id", nullable = false)
     private Integer id;
 
-    @Column(nullable = false, unique = true)
-    private String name;
+    @Embedded
+    private HubName hubName;
 
     @Embedded
     private Address address;
@@ -44,8 +43,8 @@ public class Hub {
     private boolean isDeleted = Boolean.FALSE;
 
     @Builder(access = AccessLevel.PRIVATE)
-    public Hub(String name, Address address, Coordinate coordinate) {
-        this.name = name;
+    public Hub(HubName hubName, Address address, Coordinate coordinate) {
+        this.hubName = hubName;
         this.address = address;
         this.coordinate = coordinate;
     }
@@ -54,18 +53,16 @@ public class Hub {
     public static Hub from(CreateHubRequestDto requestDto) {
 
         return Hub.builder()
-                .name(requestDto.name())
-                .address(new Address(requestDto.city(), requestDto.district(), requestDto.street(),
-                        requestDto.houseNumber()))
+                .hubName(new HubName(requestDto.hubName()))
+                .address(new Address(requestDto.city(), requestDto.district(), requestDto.street()))
                 .coordinate(new Coordinate(requestDto.latitude(), requestDto.longitude()))
                 .build();
     }
 
     // hub 업데이트
     public void update(UpdateHubRequestDto requestDto) {
-        this.name = requestDto.name();
-        this.address = new Address(requestDto.city(), requestDto.district(), requestDto.street(),
-                requestDto.houseNumber());
+        this.hubName = new HubName(requestDto.hubName());
+        this.address = new Address(requestDto.city(), requestDto.district(), requestDto.street());
         this.coordinate = new Coordinate(requestDto.latitude(), requestDto.longitude());
     }
 

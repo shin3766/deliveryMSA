@@ -3,9 +3,9 @@ spring:
     name: hubs
 
   datasource:
-    url: jdbc:mysql://localhost:3306/hubs
-    username: hubs
-    password: hubs
+    url: jdbc:mysql://localhost:3306/boards
+    username: root
+    password: ss0920
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

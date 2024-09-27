@@ -20,8 +20,6 @@ public class AddressConverter implements AttributeConverter<Address, String> {
                 .append(address.getDistrict())
                 .append(".")
                 .append(address.getStreet())
-                .append(".")
-                .append(address.getHouseNumber())
                 .toString();
     }
 
@@ -35,8 +33,7 @@ public class AddressConverter implements AttributeConverter<Address, String> {
         String city = parts[0];
         String district = parts[1];
         String street = parts[2];
-        String houseNumber = parts[3];
 
-        return new Address(city, district, street, houseNumber);
+        return new Address(city, district, street);
     }
 }

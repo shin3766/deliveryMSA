@@ -1,7 +1,7 @@
 package com.deliveryMSA.Hub.domain.hub.dto.request;
 
 public record UpdateHubRequestDto(
-        String name,
+        String hubName,
         String city,
         String district,
         String street,

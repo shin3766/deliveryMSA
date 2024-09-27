@@ -11,11 +11,10 @@ import lombok.Builder;
 public record CreateHubResponseDto(
 
         Integer id,
-        String name,
+        String hubName,
         String city,
         String district,
         String street,
-        String houseNumber,
         double latitude,
         double longitude
 ) {
@@ -23,11 +22,10 @@ public record CreateHubResponseDto(
 
         return CreateHubResponseDto.builder()
                .id(Hub.getId())
-               .name(Hub.getName())
+               .hubName(Hub.getHubName().toString())
                .city(Hub.getAddress().getCity())
                .district(Hub.getAddress().getDistrict())
                .street(Hub.getAddress().getStreet())
-               .houseNumber(Hub.getAddress().getHouseNumber())
                .latitude(Hub.getCoordinate().getLatitude())
                .longitude(Hub.getCoordinate().getLongitude())
                .build();

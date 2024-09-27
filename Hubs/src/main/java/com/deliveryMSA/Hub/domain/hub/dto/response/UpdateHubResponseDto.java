@@ -7,11 +7,10 @@ import lombok.Builder;
 @Builder(access = AccessLevel.PRIVATE)
 public record UpdateHubResponseDto(
 
-        String name,
+        String hubName,
         String city,
         String district,
         String street,
-        String houseNumber,
         double latitude,
         double longitude
 ) {
@@ -19,11 +18,10 @@ public record UpdateHubResponseDto(
     public static UpdateHubResponseDto from(Hub Hub) {
 
         return UpdateHubResponseDto.builder()
-                .name(Hub.getName())
+                .hubName(Hub.getHubName().getValue())
                 .city(Hub.getAddress().getCity())
                 .district(Hub.getAddress().getDistrict())
                 .street(Hub.getAddress().getStreet())
-                .houseNumber(Hub.getAddress().getHouseNumber())
                 .latitude(Hub.getCoordinate().getLatitude())
                 .longitude(Hub.getCoordinate().getLongitude())
                 .build();
