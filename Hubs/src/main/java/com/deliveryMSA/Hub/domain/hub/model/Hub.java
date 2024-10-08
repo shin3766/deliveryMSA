@@ -7,12 +7,19 @@ import com.deliveryMSA.Hub.domain.hub.model.value_objects.Coordinate;
 import com.deliveryMSA.Hub.domain.hub.model.value_objects.HubName;
 import jakarta.persistence.Access;
 import jakarta.persistence.AccessType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,6 +49,12 @@ public class Hub {
 
     private boolean isDeleted = Boolean.FALSE;
 
+    @OneToMany(mappedBy = "startHub", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HubRoute> startHubRoutes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "endHub", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HubRoute> endHubRoutes = new ArrayList<>();
+
     @Builder(access = AccessLevel.PRIVATE)
     public Hub(HubName hubName, Address address, Coordinate coordinate) {
         this.hubName = hubName;
@@ -67,7 +80,18 @@ public class Hub {
     }
 
     // hub 삭제
-    public void deleteHub() {
+    public void softDeleteHub() {
         this.isDeleted = Boolean.TRUE;
+
+        softDeleteRoutes();
+    }
+
+    private void softDeleteRoutes() {
+        for (HubRoute startHubRoute : startHubRoutes) {
+            startHubRoute.softDeleteRoute();
+        }
+        for (HubRoute endHubRoute : endHubRoutes) {
+            endHubRoute.softDeleteRoute();
+        }
     }
 }

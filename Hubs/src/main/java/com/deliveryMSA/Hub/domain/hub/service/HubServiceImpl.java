@@ -46,7 +46,7 @@ public class HubServiceImpl implements HubService {
     public void deleteHub(Integer hubId) {
 
         Hub hub = findById(hubId);
-        hub.deleteHub();
+        hub.softDeleteHub();
     }
 
     @Override

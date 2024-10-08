@@ -13,14 +13,11 @@ public class AddressConverter implements AttributeConverter<Address, String> {
         if (address == null) {
             return null;
         }
-
-        return new StringBuilder()
-                .append(address.getCity())
-                .append(".")
-                .append(address.getDistrict())
-                .append(".")
-                .append(address.getStreet())
-                .toString();
+        return address.getCity()
+                + "."
+                + address.getDistrict()
+                + "."
+                + address.getStreet();
     }
 
     @Override
