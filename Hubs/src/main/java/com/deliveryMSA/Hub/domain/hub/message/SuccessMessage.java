@@ -6,7 +6,8 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
-public enum SuccessMessage {
+public enum
+SuccessMessage {
 
     CREATED_HUB(HttpStatus.CREATED, "허브가 생성되었습니다."),
     UPDATED_HUB(HttpStatus.OK, "허브가 수정되었습니다."),

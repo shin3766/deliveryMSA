@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:MSATest
+    username: sa
+    password: ss0920
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect

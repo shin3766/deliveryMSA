@@ -47,19 +47,16 @@ public class Hub {
     @Embedded
     private Coordinate coordinate;
 
+    private Integer routeOrder;
+
     private boolean isDeleted = Boolean.FALSE;
 
-    @OneToMany(mappedBy = "startHub", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HubRoute> startHubRoutes = new ArrayList<>();
-
-    @OneToMany(mappedBy = "endHub", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HubRoute> endHubRoutes = new ArrayList<>();
-
     @Builder(access = AccessLevel.PRIVATE)
-    public Hub(HubName hubName, Address address, Coordinate coordinate) {
+    public Hub(HubName hubName, Address address, Coordinate coordinate, Integer routeOrder) {
         this.hubName = hubName;
         this.address = address;
         this.coordinate = coordinate;
+        this.routeOrder = routeOrder;
     }
 
     // hub 생성
@@ -69,6 +66,7 @@ public class Hub {
                 .hubName(new HubName(requestDto.hubName()))
                 .address(new Address(requestDto.city(), requestDto.district(), requestDto.street()))
                 .coordinate(new Coordinate(requestDto.latitude(), requestDto.longitude()))
+                .routeOrder(requestDto.routeOrder())
                 .build();
     }
 
@@ -77,21 +75,14 @@ public class Hub {
         this.hubName = new HubName(requestDto.hubName());
         this.address = new Address(requestDto.city(), requestDto.district(), requestDto.street());
         this.coordinate = new Coordinate(requestDto.latitude(), requestDto.longitude());
+        this.routeOrder = requestDto.routeOrder();
     }
 
     // hub 삭제
     public void softDeleteHub() {
         this.isDeleted = Boolean.TRUE;
-
-        softDeleteRoutes();
     }
+    
+    // 허브 삭제 시 허브 이동거리 에서 삭제된 허브와 관련된 이동거리 정보 삭제
 
-    private void softDeleteRoutes() {
-        for (HubRoute startHubRoute : startHubRoutes) {
-            startHubRoute.softDeleteRoute();
-        }
-        for (HubRoute endHubRoute : endHubRoutes) {
-            endHubRoute.softDeleteRoute();
-        }
-    }
 }

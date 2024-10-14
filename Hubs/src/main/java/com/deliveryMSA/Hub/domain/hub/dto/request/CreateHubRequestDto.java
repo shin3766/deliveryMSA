@@ -6,6 +6,7 @@ public record CreateHubRequestDto(
     String district,
     String street,
     double latitude,
-    double longitude
+    double longitude,
+    Integer routeOrder
     ) {
 }

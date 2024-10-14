@@ -3,10 +3,10 @@ spring:
     name: hubs
 
   datasource:
-    url:  jdbc:h2:tcp://localhost:9092/test
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/boards
+    username: root
+    password: ss0920
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:

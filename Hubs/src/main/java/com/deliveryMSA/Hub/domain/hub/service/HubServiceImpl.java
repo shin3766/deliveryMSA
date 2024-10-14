@@ -15,6 +15,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+허브 생성, 수정, 삭제, 조회 구현 완료
+허브 전체 조회 미구현. QueryDSL 사용 필요
+
+ */
+
 @Service
 @RequiredArgsConstructor
 public class HubServiceImpl implements HubService {

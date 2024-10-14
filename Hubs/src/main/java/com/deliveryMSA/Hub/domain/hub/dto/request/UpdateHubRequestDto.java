@@ -7,7 +7,8 @@ public record UpdateHubRequestDto(
         String street,
         String houseNumber,
         double latitude,
-        double longitude
+        double longitude,
+        Integer routeOrder
 ) {
 
 }
